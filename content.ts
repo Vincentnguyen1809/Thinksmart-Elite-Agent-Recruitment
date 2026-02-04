@@ -19,7 +19,7 @@ export const SITE_CONTENT = {
     hotline: "+1 (678) 722-3447",
     email: "Support@thinksmartinsurance.com",
     address: "1424 N Brown Rd # 450, Lawrenceville, GA 30043, Hoa Kỳ",
-    applyButtonText: "ỨNG TUYỂN NGAY",
+    applyButtonText: "APPLY NOW",
     formUrl: "https://api.leadconnectorhq.com/widget/bookings/become-an-elite-agent-with-thinksmart-insurance"
   },
 
@@ -31,7 +31,7 @@ export const SITE_CONTENT = {
     subBrand: "THINKSMART INSURANCE",
     headline: "KIẾN TẠO TƯƠNG LAI TÀI CHÍNH & SỰ NGHIỆP THU NHẬP ĐỘT PHÁ",
     description: "Bạn khao khát một công việc online/remote thu nhập KHÔNG GIỚI HẠN, được đào tạo bài bản từ A-Z để làm chủ sự nghiệp và xây dựng tương lai tại Hoa Kỳ?",
-    buttonText: "Bắt đầu ứng tuyển ngay",
+    buttonText: "ỨNG TUYỂN NGAY ELITE AGENT",
     noteText: "Đăng ký phỏng vấn 1:1 cùng Elite Agent Manager",
     videoId: "PoUWP--0CDU",
     avatars: [
