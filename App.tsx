@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Benefits from './components/Benefits';
@@ -179,6 +180,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <SpeedInsights />
     </div>
   );
 };
