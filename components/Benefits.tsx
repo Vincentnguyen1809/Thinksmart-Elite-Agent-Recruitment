@@ -13,47 +13,60 @@ const Benefits: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      {benefitsSection.items.map((item, idx) => (
-        <div 
-          key={idx} 
-          className="group relative p-5 md:p-10 bg-[#DC2626] md:bg-white md:hover:bg-[#DC2626] transition-all duration-500 border border-gray-100 flex flex-col md:flex-row gap-4 md:gap-8 items-stretch md:items-start hover:shadow-[0_40px_80px_rgba(220,38,38,0.4)] overflow-hidden cursor-default"
-        >
-          {/* Header row for Mobile (Icon + Title) */}
-          <div className="flex flex-row items-center gap-4 md:contents">
-            {/* Icon Box: White box */}
-            <div className="relative z-10 text-elite-red transition-all duration-500 flex-shrink-0 bg-white md:bg-red-50 md:group-hover:bg-white w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-sm shadow-sm">
-              {icons[idx] || icons[0]}
-            </div>
+    <div className="flex flex-col gap-8 md:gap-12">
+      {/* Grid of benefit cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {benefitsSection.items.map((item, idx) => (
+          <div 
+            key={idx} 
+            className="group relative p-5 md:p-10 bg-[#DC2626] md:bg-white md:hover:bg-[#DC2626] transition-all duration-500 border border-gray-100 flex flex-col md:flex-row gap-4 md:gap-8 items-stretch md:items-start hover:shadow-[0_40px_80px_rgba(220,38,38,0.4)] overflow-hidden cursor-default"
+          >
+            {/* Header row for Mobile (Icon + Title) */}
+            <div className="flex flex-row items-center gap-4 md:contents">
+              {/* Icon Box: White box */}
+              <div className="relative z-10 text-elite-red transition-all duration-500 flex-shrink-0 bg-white md:bg-red-50 md:group-hover:bg-white w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-sm shadow-sm">
+                {icons[idx] || icons[0]}
+              </div>
 
-            {/* Title: Only visible in the header on mobile */}
-            <h3 className="md:hidden text-[19px] font-black text-white leading-tight uppercase tracking-tighter italic flex-1">
-              {item.title}
-            </h3>
-          </div>
-          
-          <div className="relative z-10 flex flex-col flex-1">
-            {/* Title: Visible on Desktop next to icon or in flex-row */}
-            <h3 className="hidden md:block text-2xl font-black mb-4 text-black md:group-hover:text-white transition-all duration-500 leading-tight uppercase tracking-tighter italic">
+              {/* Title: Only visible in the header on mobile */}
+              <h3 className="md:hidden text-[19px] font-black text-white leading-tight uppercase tracking-tighter flex-1">
                 {item.title}
-            </h3>
-            
-            {/* Description Box: Bordered on mobile per "khoanh đỏ" */}
-            <div className="border-2 border-white md:border-0 p-4 md:p-0 transition-all duration-500">
-              <p className="text-white md:text-black md:group-hover:text-white text-[16px] md:text-[19px] leading-relaxed font-normal md:font-bold">
-                  {item.desc}
-              </p>
+              </h3>
             </div>
-
-            {/* Special Badge: Adjusted for appearance */}
-            {item.specialBadge && (
-                <div className="mt-4 md:mt-6 bg-white/20 md:bg-elite-red/5 md:group-hover:bg-white/20 px-4 py-2 border-l-4 border-white md:border-elite-red md:group-hover:border-white transition-all duration-500 w-fit">
-                    <span className="text-[12px] font-black text-white md:text-elite-red md:group-hover:text-white uppercase tracking-widest italic leading-none">{item.specialBadge}</span>
-                </div>
-            )}
+            
+            <div className="relative z-10 flex flex-col flex-1">
+              {/* Title: Visible on Desktop next to icon or in flex-row */}
+              <h3 className="hidden md:block text-2xl font-black mb-4 text-black md:group-hover:text-white transition-all duration-500 leading-tight uppercase tracking-tighter">
+                  {item.title}
+              </h3>
+              
+              {/* Description Box: Bordered on mobile */}
+              <div className="border-2 border-white md:border-0 p-4 md:p-0 transition-all duration-500">
+                <p className="text-white md:text-black md:group-hover:text-white text-[16px] md:text-[19px] leading-relaxed font-normal md:font-bold">
+                    {item.desc}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Special Highlight Box - Bonus and Trip text is here */}
+      <div className="w-full border-2 border-elite-red bg-white p-4 md:p-6 text-center shadow-lg relative overflow-hidden group">
+          <div className="absolute top-0 left-0 w-1 h-full bg-elite-red"></div>
+          <div className="absolute top-0 right-0 w-1 h-full bg-elite-red"></div>
+          
+          <h4 className="text-elite-red text-lg md:text-2xl font-black uppercase tracking-widest mb-2">
+            {benefitsSection.specialHighlightTitle}
+          </h4>
+          <div className="flex flex-col gap-1 md:gap-2">
+            {benefitsSection.specialHighlightItems.map((text, i) => (
+              <p key={i} className="text-elite-red text-[12px] md:text-[18px] font-bold uppercase tracking-tight">
+                {text}
+              </p>
+            ))}
+          </div>
+      </div>
     </div>
   );
 };

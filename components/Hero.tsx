@@ -7,12 +7,12 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
-  const [playVideo, setPlayVideo] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const { hero } = SITE_CONTENT;
 
   // Hàm hỗ trợ đổi màu đỏ cho các cụm từ cụ thể trong đoạn mô tả
   const highlightImportantText = (text: string) => {
-    const highlights = ["KHÔNG GIỚI HẠN", "đào tạo bài bản từ A-Z", "SỰ NGHIỆP THU NHẬP ĐỘT PHÁ"];
+    const highlights = ["KHÔNG GIỚI HẠN", "đào tạo bài bản từ A-Z"];
     
     let parts: React.ReactNode[] = [text];
     
@@ -52,22 +52,27 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
               <span className="w-1.5 h-1.5 bg-elite-red rounded-full animate-ping"></span>
               <span className="text-white font-black text-[10px] md:text-[17px] uppercase tracking-tight md:tracking-[0.2em] whitespace-nowrap">{hero.badgeText}</span>
             </div>
-            <h1 className="text-[24px] md:text-5xl lg:text-6xl xl:text-[75px] font-black tracking-tighter text-white leading-tight lg:leading-[1.1] uppercase italic whitespace-nowrap">
-              {hero.titleMain} <span className="text-elite-red not-italic">{hero.titleHighlight}</span>
+            <h1 className="text-[24px] md:text-5xl lg:text-6xl xl:text-[75px] font-black tracking-tighter text-white leading-tight lg:leading-[1.1] uppercase whitespace-nowrap">
+              {hero.titleMain} <span className="text-elite-red">{hero.titleHighlight}</span>
             </h1>
-            <p className="text-white font-black text-[13px] md:text-xl tracking-tighter uppercase italic border-l-[1px] border-white pl-4 md:pl-6 mx-auto lg:mx-0 h-4 md:h-5 flex items-center">
+            <p className="text-white font-black text-[13px] md:text-xl tracking-tighter uppercase border-l-[1px] border-white pl-4 md:pl-6 mx-auto lg:mx-0 h-4 md:h-5 flex items-center">
               {hero.subBrand}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center w-full">
+            {/* Cột chữ */}
             <div className="lg:col-span-5 space-y-4 flex flex-col h-full z-20">
-              <div className="bg-gradient-to-r from-white/10 to-transparent p-4 md:p-6 rounded-r-lg border-l-[1px] border-white text-left w-full">
-                <h3 className="text-[15px] md:text-[26px] text-white font-black tracking-tighter mb-3 leading-[1.2] uppercase italic">
-                  <span className="block whitespace-nowrap">KIẾN TẠO TƯƠNG LAI TÀI CHÍNH</span>
-                  <span className="block whitespace-nowrap">& {highlightImportantText("SỰ NGHIỆP THU NHẬP ĐỘT PHÁ")}</span>
+              <div className="bg-gradient-to-r from-white/10 to-transparent p-4 md:p-6 rounded-r-lg border-l-[1px] border-white text-left w-full overflow-hidden">
+                <h3 className="text-[13px] sm:text-[18px] md:text-[24px] lg:text-[26px] xl:text-[30px] font-black tracking-tighter mb-3 leading-tight uppercase">
+                  <span className="text-white block whitespace-nowrap">{hero.headlineLine1}</span>
+                  <span className="text-elite-red block whitespace-nowrap md:whitespace-normal">
+                    {hero.headlineLine2}
+                    <br className="hidden md:block" />
+                    <span> {hero.headlineLine3}</span>
+                  </span>
                 </h3>
-                <p className="text-[18px] md:text-[23px] leading-snug md:leading-relaxed font-medium italic tracking-tight text-white mt-3">
+                <p className="text-[17px] md:text-[20px] lg:text-[21px] leading-snug md:leading-relaxed font-medium tracking-tight text-white mt-3">
                   {highlightImportantText(hero.description)}
                 </p>
               </div>
@@ -75,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
               <div className="flex flex-col space-y-4 w-full">
                 <button
                   onClick={onApplyClick}
-                  className="group relative w-full overflow-hidden bg-elite-red text-white px-3 md:px-6 py-4 md:py-5 rounded-sm font-black text-[14px] md:text-[18px] uppercase tracking-wide md:tracking-widest transition-all shadow-[0_25px_60px_rgba(220,38,38,0.35)] hover:scale-105 italic whitespace-nowrap flex items-center justify-center border-b-4 border-red-800"
+                  className="group relative w-full overflow-hidden bg-elite-red text-white px-3 md:px-6 py-4 md:py-5 rounded-sm font-black text-[14px] md:text-[18px] uppercase tracking-wide md:tracking-widest transition-all shadow-[0_25px_60px_rgba(220,38,38,0.35)] hover:scale-105 whitespace-nowrap flex items-center justify-center border-b-4 border-red-800"
                 >
                   <span className="relative z-10">{hero.buttonText}</span>
                   <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
@@ -96,44 +101,64 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 w-full h-full z-10">
+            {/* Cột video thumbnail */}
+            <div className="lg:col-span-7 w-full h-full z-10 flex items-center">
               <div 
-                className="relative group cursor-pointer aspect-video bg-gray-950 rounded-sm overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(220,38,38,0.15)] w-full"
-                onClick={() => setPlayVideo(true)}
+                className="relative group cursor-pointer aspect-video bg-gray-950 rounded-sm overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(220,38,38,0.25)] w-full"
+                onClick={() => setShowVideoModal(true)}
               >
-                {!playVideo ? (
-                  <>
-                    <img 
-                      src={`https://img.youtube.com/vi/${hero.videoId}/maxresdefault.jpg`} 
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-1000 group-hover:scale-105" 
-                      alt="Hero Video Thumbnail"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${hero.videoId}/0.jpg`;
-                      }}
-                    />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <div className="relative">
-                          <div className="absolute inset-0 bg-elite-red blur-3xl opacity-50 animate-pulse"></div>
-                          <div className="relative w-16 h-16 md:w-20 md:h-20 bg-elite-red rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-500">
-                            <div className="w-0 h-0 border-t-[10px] md:border-t-[12px] border-t-transparent border-l-[16px] md:border-l-[20px] border-l-white border-b-[10px] md:border-b-[12px] border-b-transparent ml-1.5"></div>
-                          </div>
+                <img 
+                  src={`https://img.youtube.com/vi/${hero.videoId}/maxresdefault.jpg`} 
+                  className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-all duration-1000 group-hover:scale-105" 
+                   alt="Hero Video Thumbnail"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${hero.videoId}/0.jpg`;
+                  }}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <div className="relative">
+                      <div className="absolute inset-0 bg-elite-red blur-[100px] opacity-40 animate-pulse"></div>
+                      <div className="relative w-20 h-20 md:w-28 md:h-28 bg-elite-red rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-500">
+                        <div className="w-0 h-0 border-t-[12px] md:border-t-[18px] border-t-transparent border-l-[20px] md:border-l-[28px] border-l-white border-b-[12px] md:border-b-[18px] border-b-transparent ml-2"></div>
                       </div>
-                    </div>
-                  </>
-                ) : (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${hero.videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&autohide=1`}
-                    title="Introduction Video"
-                    className="w-full h-full border-none"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-                )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Video Modal - Cinema Zoom */}
+      {showVideoModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl animate-in fade-in duration-300">
+          
+          <div className="relative w-full max-w-5xl aspect-video mx-4">
+            {/* Nút đóng video - Nhỏ gọn, sát góc video, không có chữ Close */}
+            <button 
+              onClick={() => setShowVideoModal(false)}
+              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 z-[110] bg-elite-red hover:bg-white text-white hover:text-black rounded-full w-10 h-10 md:w-12 md:h-12 transition-all duration-300 group border-2 border-white shadow-2xl flex items-center justify-center"
+              aria-label="Đóng Video"
+            >
+              <span className="text-2xl md:text-3xl font-bold leading-none transition-transform duration-300 group-hover:rotate-90">&times;</span>
+            </button>
+
+            {/* Iframe Video */}
+            <div className="w-full h-full bg-black shadow-[0_0_100px_rgba(220,38,38,0.5)] overflow-hidden border border-white/10 rounded-sm">
+              <iframe
+                src={`https://www.youtube.com/embed/${hero.videoId}?autoplay=1&mute=0&rel=0&modestbranding=1&showinfo=0&controls=1&enablejsapi=1`}
+                title="Cinematic Hero Video"
+                className="w-full h-full border-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+          
+          {/* Overlay background clickable to close */}
+          <div className="absolute inset-0 -z-10" onClick={() => setShowVideoModal(false)}></div>
+        </div>
+      )}
     </div>
   );
 };

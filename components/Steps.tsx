@@ -15,14 +15,14 @@ const icons = [
 ];
 
 const Steps: React.FC<StepsProps> = ({ onApplyClick }) => {
-  const { stepsSection, brand } = SITE_CONTENT;
+  const { stepsSection, brand, opportunitySection } = SITE_CONTENT;
 
   return (
     <section className="py-8 md:py-16 bg-white overflow-hidden text-center border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-[12px] md:text-[17px] font-black text-elite-red uppercase tracking-[0.6em] md:tracking-[0.7em] mb-1 italic">{stepsSection.badge}</h2>
-          <h3 className="text-2xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter uppercase leading-tight lg:leading-[1.3] italic text-balance">
+          <h2 className="text-[12px] md:text-[17px] font-black text-elite-red uppercase tracking-[0.6em] md:tracking-[0.7em] mb-1">{stepsSection.badge}</h2>
+          <h3 className="text-2xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter uppercase leading-tight lg:leading-[1.3] text-balance">
             {stepsSection.title}
           </h3>
           <div className="mt-2 md:mt-4 w-16 md:w-24 h-1.5 md:h-2 bg-elite-red mx-auto"></div>
@@ -43,7 +43,7 @@ const Steps: React.FC<StepsProps> = ({ onApplyClick }) => {
               </div>
               
               <div className="text-center px-1">
-                <h4 className="text-[18px] md:text-[19px] font-black text-black mb-1.5 uppercase tracking-tighter italic leading-none group-hover:scale-105 transition-transform duration-300">
+                <h4 className="text-[18px] md:text-[19px] font-black text-black mb-1.5 uppercase tracking-tighter leading-none group-hover:scale-105 transition-transform duration-300">
                   {step.title}
                 </h4>
                 <p className="text-black text-[17px] md:text-[20px] leading-snug font-medium tracking-tight text-balance">
@@ -57,12 +57,12 @@ const Steps: React.FC<StepsProps> = ({ onApplyClick }) => {
         <div className="flex flex-col items-center">
             <button 
                 onClick={onApplyClick}
-                className="w-full md:w-auto bg-elite-red hover:bg-black text-white px-6 md:px-10 py-4 md:py-5 rounded-sm font-black text-[13px] sm:text-[15px] md:text-lg uppercase tracking-wide md:tracking-widest transition-all shadow-[0_15px_40px_rgba(220,38,38,0.25)] italic mb-4 flex items-center justify-center text-center whitespace-nowrap"
+                className="w-full md:w-auto bg-elite-red hover:bg-black text-white px-6 md:px-10 py-4 md:py-5 rounded-sm font-black text-[13px] sm:text-[15px] md:text-lg uppercase tracking-wide md:tracking-widest transition-all shadow-[0_15px_40px_rgba(220,38,38,0.25)] mb-4 flex items-center justify-center text-center whitespace-nowrap"
             >
-                ỨNG TUYỂN NGAY ELITE AGENT
+                {brand.footerApplyText}
             </button>
             <p className="text-black text-[13px] md:text-[17px] font-bold uppercase tracking-tight text-balance">
-                Đăng ký ngày để được phỏng vấn 1:1 cùng Elite Agent Manager
+                {opportunitySection.subNote}
             </p>
         </div>
       </div>

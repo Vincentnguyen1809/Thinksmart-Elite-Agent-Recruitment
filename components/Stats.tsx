@@ -26,7 +26,7 @@ const Stats: React.FC = () => {
               <div className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-elite-red group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100">
                 {getIcon(stat.label)}
               </div>
-              <dd className="text-lg md:text-[26px] font-black tracking-tighter text-white italic uppercase leading-none mb-1 md:mb-2">
+              <dd className="text-lg md:text-[26px] font-black tracking-tighter text-white uppercase leading-none mb-1 md:mb-2">
                 {stat.label.includes('GOOGLE') || stat.label.includes('REVIEW') ? (
                   <span className="text-elite-red drop-shadow-[0_0_12px_rgba(220,38,38,0.5)]">{stat.value}</span>
                 ) : (

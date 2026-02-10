@@ -20,8 +20,8 @@ const VideoTestimonials: React.FC = () => {
         <div className="mb-2 md:mb-8">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-4 md:mb-8">
             <div className="max-w-2xl text-left">
-              <h2 className="text-[12px] md:text-[17px] font-bold text-elite-red uppercase tracking-[0.4em] md:tracking-[0.5em] mb-1 italic">{testimonialsSection.badge}</h2>
-              <h3 className="text-2xl md:text-5xl font-black text-white tracking-tighter uppercase leading-tight lg:leading-[1.3] italic">{testimonialsSection.title}</h3>
+              <h2 className="text-[12px] md:text-[17px] font-bold text-elite-red uppercase tracking-[0.4em] md:tracking-[0.5em] mb-1">{testimonialsSection.badge}</h2>
+              <h3 className="text-2xl md:text-5xl font-black text-white tracking-tighter uppercase leading-tight lg:leading-[1.3] text-balance">{testimonialsSection.title}</h3>
               <p className="mt-1 text-gray-400 font-medium text-[14px] md:text-base">{testimonialsSection.subtitle}</p>
             </div>
             <div className="hidden md:flex gap-3 mt-4">
@@ -40,7 +40,7 @@ const VideoTestimonials: React.FC = () => {
                   <div className="relative aspect-video bg-black overflow-hidden border-b-[6px] md:border-b-[8px] border-elite-red shadow-lg">
                     {playingId === video.id ? (
                       <iframe
-                        src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1`}
+                        src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&mute=0&rel=0&modestbranding=1&showinfo=0&controls=1&enablejsapi=1`}
                         title={video.title}
                         className="absolute inset-0 w-full h-full border-none"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -68,11 +68,11 @@ const VideoTestimonials: React.FC = () => {
                     )}
                   </div>
                   <div className="mt-4 md:mt-5 text-left">
-                    <h4 className="text-base md:text-lg font-black text-white uppercase tracking-tighter leading-none mb-1.5 italic">{video.title}</h4>
+                    <h4 className="text-base md:text-lg font-black text-white uppercase tracking-tighter leading-none mb-1.5">{video.title}</h4>
                     <p className="text-gray-400 font-medium mb-2.5 text-[15px] md:text-[14px]">{video.description}</p>
                     <div className="flex items-center gap-2 md:gap-3">
                         <div className="h-px w-4 md:w-6 bg-elite-red"></div>
-                        <p className="text-white font-black text-[12px] md:text-[13px] uppercase tracking-widest italic">{video.name}</p>
+                        <p className="text-white font-black text-[12px] md:text-[13px] uppercase tracking-widest">{video.name}</p>
                     </div>
                   </div>
                 </div>

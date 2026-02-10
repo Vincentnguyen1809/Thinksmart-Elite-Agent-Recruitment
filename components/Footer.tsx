@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                      />
                    </div>
                    <span 
-                    className="px-3 md:px-5 py-2 border border-white/10 text-[9px] md:text-[10px] font-black group-hover:text-white transition-all uppercase tracking-widest italic whitespace-nowrap bg-white/5 group-hover:bg-elite-red group-hover:border-elite-red shadow-lg"
+                    className="px-3 md:px-5 py-2 border border-white/10 text-[9px] md:text-[10px] font-black group-hover:text-white transition-all uppercase tracking-widest whitespace-nowrap bg-white/5 group-hover:bg-elite-red group-hover:border-elite-red shadow-lg"
                    >
                      {social.name}
                    </span>
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="md:col-span-3">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-elite-red mb-4 md:mb-6 italic">Office Address</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-elite-red mb-4 md:mb-6">Office Address</h4>
             <p className="text-gray-400 text-sm leading-snug font-black uppercase tracking-tight">
               {brand.address.split(',').map((part, i) => (
                 <React.Fragment key={i}>
@@ -59,25 +59,25 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-elite-red mb-4 md:mb-6 italic">Contact Support</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-elite-red mb-4 md:mb-6">Contact Support</h4>
             <ul className="space-y-4">
               <li>
-                <span className="text-gray-600 block text-[9px] uppercase font-black tracking-widest mb-0.5 italic">Hotline (USA)</span>
+                <span className="text-gray-600 block text-[9px] uppercase font-black tracking-widest mb-0.5">Hotline (USA)</span>
                 <a href={`tel:${brand.hotline.replace(/\D/g, '')}`} className="text-sm font-black hover:text-elite-red transition-colors uppercase tracking-tight">{brand.hotline}</a>
               </li>
               <li>
-                <span className="text-gray-600 block text-[9px] uppercase font-black tracking-widest mb-0.5 italic">Email Center</span>
+                <span className="text-gray-600 block text-[9px] uppercase font-black tracking-widest mb-0.5">Email Center</span>
                 <a href={`mailto:${brand.email}`} className="hover:text-elite-red transition-colors font-bold tracking-widest text-[11px] uppercase">{brand.email}</a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-[8px] font-black text-gray-500 uppercase tracking-[0.4em] italic">
+        <div className="pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-[8px] font-black text-gray-500 uppercase tracking-[0.4em]">
           <p>© {new Date().getFullYear()} {brand.name}. All Rights Reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+            <a href={brand.privacyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href={brand.termsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Terms of Use</a>
           </div>
         </div>
       </div>
